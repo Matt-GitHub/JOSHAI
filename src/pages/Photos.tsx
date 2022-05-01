@@ -7,6 +7,7 @@ import DatePicker from "../components/datePicker";
 import NoResultsFound from "../components/noResultsFound";
 import { NavButton } from "../components/navButton";
 import { SinglePhotos } from "../components/photos";
+import { ErrorBoundary } from "../components/errorBoundary";
 
 function Photos() {
   const { rover } = useParams();
@@ -58,12 +59,11 @@ function Photos() {
     return <div>...Loading</div>;
   }
 
-  return (
-    <div>
-      <h1>Error Fetching Data</h1>
-      <NavButton path="/" message="back" />
-    </div>
-  );
+  if (isError) {
+    return <div>Error Fetching Data</div>;
+  }
+
+  return <ErrorBoundary />;
 }
 
 export default Photos;

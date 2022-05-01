@@ -6,7 +6,7 @@ interface IPhotoProps {
 export function SinglePhotos({ imgSource, earthDate }: IPhotoProps) {
   return (
     <div>
-      <img style={{ width: "200px" }} src={imgSource} alt={earthDate} />;
+      <img style={{ width: "200px" }} src={imgSource} alt={earthDate} />
     </div>
   );
 }

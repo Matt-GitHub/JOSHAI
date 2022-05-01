@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import { UseRover } from "../hooks/useRover";
 import Rover from "../components/rover";
+import { ErrorBoundary } from "../components/errorBoundary";
 
 function App() {
   const { data, isError, isLoading } = UseRover();
@@ -31,11 +32,15 @@ function App() {
     return <div>...Loading</div>;
   }
 
-  return (
-    <div>
-      <h1>Error Fetching Data</h1>
-    </div>
-  );
+  if (isError) {
+    return (
+      <div>
+        <h1>Error Fetching Data</h1>
+      </div>
+    );
+  }
+
+  return <ErrorBoundary />;
 }
 
 export default App;
